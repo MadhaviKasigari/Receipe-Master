@@ -64,13 +64,11 @@ const App = () => {
   const showRecipe = (recipeId) => dispatch({ type: "show-recipe", recipeId });
   useEffect(() => {
     fetch("/api/recipes")
-      // fetch("https://localhost:3000/recipes")
       .then((res) => res.json())
       .then((data) => dispatch({ type: "load-recipes", data }));
   }, []);
   useEffect(() => {
     fetch(`/api/recipe.title/${state.searchKeyword}`)
-      // fetch(`https://localhost:3000/recipes/title/${state.searchKeyword}`)
       .then((res) => res.json())
       .then((data) => dispatch({ type: "load-recipes", data: data.recipes }));
   }, [state.searchKeyword]);
@@ -110,7 +108,6 @@ const App = () => {
           <AddRecipe
             onAdd={(recipe) => {
               fetch("/api/recipes", {
-                // fetch("https://localhost:3000/recipes", {
                 method: "POST",
                 body: JSON.stringify(recipe),
               })
